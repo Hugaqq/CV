@@ -1,0 +1,128 @@
+%-------------------------
+% Resume in LaTeX
+% Based on Jake's Resume style, adapted for Chinese CS/AI resume
+%------------------------
+
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage[UTF8]{ctex}
+\usepackage[
+  left=0.58in,
+  right=0.58in,
+  top=0.44in,
+  bottom=0.44in
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+\setmainfont[
+  BoldFont = lmroman10-bold.otf,
+  ItalicFont = lmroman10-italic.otf,
+  BoldItalicFont = lmroman10-bolditalic.otf,
+  Ligatures=NoCommon
+]{lmroman10-regular.otf}
+
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedright
+\raggedbottom
+\setlength{\tabcolsep}{0pt}
+\setlength{\parindent}{0pt}
+\linespread{1.05}
+
+\titleformat{\section}
+  {\vspace{4pt}\large\bfseries}
+  {}
+  {0pt}
+  {}
+  [\vspace{1pt}\color{black}\titlerule\vspace{-2pt}]
+
+\newcommand{\entry}[4]{
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4} \\
+  \end{tabular*}\vspace{-3pt}
+}
+
+\newcommand{\project}[1]{
+  \vspace{3pt}\textbf{#1}\vspace{-3pt}
+}
+
+\setlist[itemize]{
+  leftmargin=1.35em,
+  itemsep=2.6pt,
+  topsep=2.6pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\begin{document}
+\fontsize{13.2pt}{16.2pt}\selectfont
+
+%----------HEADING----------
+\begin{center}
+  {\Huge\bfseries 乔启凡} \\ \vspace{4pt}
+  \normalsize
+  (+86)19935166136 \quad | \quad
+  \href{mailto:qiaoqifan@zju.edu.cn}{qiaoqifan@zju.edu.cn} \quad | \quad
+  \href{https://github.com/Hugaqq}{github.com/Hugaqq}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{教育经历}
+\entry
+  {浙江大学 竺可桢学院 图灵班（计算机科学与技术专业）}
+  {2025.9 -}
+  {GPA: 4.48/5.00 \textbar{} 排名: 13/68}
+  {}
+\begin{itemize}
+  \item 参与图灵学术班项目：从图灵班 68 人中选 4 人参加科研训练（2026.3 -）
+\end{itemize}
+
+%-----------RESEARCH-----------
+\section{科研和学习经历}
+\entry
+  {庄博涵老师 ZIP Lab}
+  {2026.4 -}
+  {科研训练}
+  {}
+
+%-----------PROJECTS-----------
+\section{项目}
+\project{Efficient Diffusion RL infra for Visual Generation}
+\begin{itemize}
+  \item 为 Diffusion RL 视觉生成算法搭建统一训练框架，支持基于 Flow-GRPO 的 Diffusion RL 算法训练，支持不同的采样方式、Reward 算法和模型
+  \item 将训练流程抽象为 Rollout、Manifest、Reward、Optimizer、Logger 五个模块，简化新算法训练 infra 的构建，降低新模型、新 reward 和新算法的接入成本
+  \item 目前正在整合 TempFlow-GRPO、Flash-GRPO、World-R1，完成了最小单元测试
+\end{itemize}
+
+\project{RV64I RISC-V CPU 设计}
+\begin{itemize}
+  \item 基于 SystemVerilog 设计并实现了 RV64I 单周期处理器核心
+  \item 完成 Datapath、Controller 以及各个数据通路部件（如 ALU、RegFile 等）的编写，使其可以支持 RISC-V 的非扩展类型指令
+  \item 实现基于 valid-ready 握手协议的多周期控制 FSM，将取指、执行、访存和提交解耦
+\end{itemize}
+
+\project{对于字符表达式的自动微分系统}
+\begin{itemize}
+  \item 基于 C 语言设计并实现了一个符号自动求导程序，支持中缀代数表达式的解析与计算
+  \item 完成词法分析、递归下降解析器、表达式树构建、符号求导和表达式化简等核心模块
+  \item 支持多变量求偏导及常见数学函数求导规则
+\end{itemize}
+
+%-----------SKILLS-----------
+\section{技术栈}
+\begin{itemize}
+  \item \textbf{编程语言/框架：}Python, PyTorch, C, Bash, Verilog/SystemVerilog
+  \item \textbf{开发者工具：}Git, Vim, VS Code
+\end{itemize}
+
+\end{document}
