@@ -19,11 +19,15 @@
 \usepackage{xcolor}
 
 \setmainfont[
-  BoldFont = lmroman10-bold.otf,
-  ItalicFont = lmroman10-italic.otf,
-  BoldItalicFont = lmroman10-bolditalic.otf,
+  Path = /usr/local/texlive/2025/texmf-dist/fonts/opentype/public/tex-gyre/,
+  Extension = .otf,
+  UprightFont = texgyreheros-regular,
+  BoldFont = texgyreheros-bold,
+  ItalicFont = texgyreheros-italic,
+  BoldItalicFont = texgyreheros-bolditalic,
+  Numbers = Lining,
   Ligatures=NoCommon
-]{lmroman10-regular.otf}
+]{texgyreheros}
 
 \ifdefined\pdfgentounicode
   \input{glyphtounicode}
@@ -48,7 +52,7 @@
 \newcommand{\entry}[4]{
   \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{#1} & #2 \\
-    \textit{#3} & \textit{#4} \\
+    #3 & #4 \\
   \end{tabular*}\vspace{-3pt}
 }
 
@@ -64,8 +68,20 @@
   partopsep=0pt
 }
 
+\newenvironment{projectitems}{
+  \begin{itemize}[
+    leftmargin=1.35em,
+    itemsep=3.2pt,
+    topsep=3pt,
+    parsep=1pt,
+    partopsep=0pt
+  ]
+}{
+  \end{itemize}
+}
+
 \begin{document}
-\fontsize{13.2pt}{16.2pt}\selectfont
+\fontsize{13.5pt}{16.7pt}\selectfont
 
 %----------HEADING----------
 \begin{center}
@@ -98,25 +114,25 @@
 %-----------PROJECTS-----------
 \section{项目}
 \project{Efficient Diffusion RL infra for Visual Generation}
-\begin{itemize}
+\begin{projectitems}
   \item 为 Diffusion RL 视觉生成算法搭建统一训练框架，支持基于 Flow-GRPO 的 Diffusion RL 算法训练，支持不同的采样方式、Reward 算法和模型
   \item 将训练流程抽象为 Rollout、Manifest、Reward、Optimizer、Logger 五个模块，简化新算法训练 infra 的构建，降低新模型、新 reward 和新算法的接入成本
   \item 目前正在整合 TempFlow-GRPO、Flash-GRPO、World-R1，完成了最小单元测试
-\end{itemize}
+\end{projectitems}
 
 \project{RV64I RISC-V CPU 设计}
-\begin{itemize}
+\begin{projectitems}
   \item 基于 SystemVerilog 设计并实现了 RV64I 单周期处理器核心
   \item 完成 Datapath、Controller 以及各个数据通路部件（如 ALU、RegFile 等）的编写，使其可以支持 RISC-V 的非扩展类型指令
   \item 实现基于 valid-ready 握手协议的多周期控制 FSM，将取指、执行、访存和提交解耦
-\end{itemize}
+\end{projectitems}
 
 \project{对于字符表达式的自动微分系统}
-\begin{itemize}
+\begin{projectitems}
   \item 基于 C 语言设计并实现了一个符号自动求导程序，支持中缀代数表达式的解析与计算
   \item 完成词法分析、递归下降解析器、表达式树构建、符号求导和表达式化简等核心模块
   \item 支持多变量求偏导及常见数学函数求导规则
-\end{itemize}
+\end{projectitems}
 
 %-----------SKILLS-----------
 \section{技术栈}
